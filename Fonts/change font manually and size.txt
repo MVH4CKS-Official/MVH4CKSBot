@@ -1,0 +1,12 @@
+Font can be cuztomized at the button of your default.ini file
+
+Example: install the Matura MT Script Capitals.TTF
+
+then go to config folder ad open default.ini with a text editor.
+
+then at the very button of the default.ini file you change in this case to following
+
+fontname=matura mt script capitals
+fontsize=10
+timeformat=5
+--------------------------------------------------------------------------------------

@@ -1,0 +1,109 @@
+In languages\English
+
+and/or other languages add
+
+RestartSearch = "Restart searching after:"
+RestartSearchTip = "This isn't only for search mode!"
+RestartSearchInputTip = "The value you put here will be the amount to searches bot will do before it returns to village and start searching again."
+
+
+
+Make All Changes in COCBot\functions\Strategies\Standard folder
+
+GUIDesign.a3u
+
+Find:
+
+	$lblRedNukePercent = GUICtrlCreateLabel(GetLangText("lblRedNukePercent"), 30, 430, 120, 20)
+	Global $txtRedNukePercent = GUICtrlCreateInput("5", 160, 430, 50, 21, BitOR($ES_CENTER, $ES_NUMBER))
+	GUICtrlSetLimit(-1, 2)
+	
+	
+	
+	and after that paste: (NOT REPLACE)
+	
+	
+	
+		 ; Search Return:
+   Global $chkSearchConne=GUICtrlCreateCheckbox(GetLangText("RestartSearch"),145,470,125,21)
+   GUICtrlSetTip(-1, GetLangText("RestartSearchTip"))
+   GUICtrlSetOnEvent(-1, "ChkSearchConneee")
+   Global $txtSearchConne=GUICtrlCreateInput("150",280,470,25,20,BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+   GUICtrlSetTip(-1, GetLangText("RestartSearchInputTip"))
+   GUICtrlSetLimit(-1,3)
+   GUIctrlsetstate(-1,$GUI_DISABLE)
+   
+   
+   
+   
+   GUIControle.au3
+   
+   Add this at the end:
+   
+   Func ChkSearchConneee()
+     If IsChecked($chkSearchConne) Then
+    GUICtrlSetState($txtSearchConne, $GUI_ENABLE)
+     Else
+    GUICtrlSetState($txtSearchConne, $GUI_DISABLE)
+     EndIf
+   EndFunc
+   
+   
+   
+   
+   
+   Search.au3
+   
+   Find:
+   
+   				If IsChecked($chkNukeOnly) And $fullSpellFactory And $iNukeLimit > 0 Then
+					If Number($BaseData[4]) >= Number($iNukeLimit) Then
+						If checkDarkElix() Then
+							$NukeAttack = True
+							SetLog(GetLangText("msgZapFound"), $COLOR_GREEN)
+							$GoodBase = True
+							$AttackMethod = 2
+						EndIf
+					EndIf
+				EndIf
+			EndIf
+			
+			
+			
+			
+    Place this after:
+	
+	
+	
+				 $itxtSrcCon=GUICtrlRead($txtSearchConne)
+
+                If IsChecked($chkSearchConne) Then
+                   SetLog($conditionlogstr & " [Restart searching after: " & $itxtSrcCon & " searches ]",$COLOR_GREEN)
+                  If $SearchCount = $itxtSrcCon Then
+                      ReturnHome(False, False, True)
+                      $SearchCount = 0
+                  EndIf
+               EndIf
+			   
+			   
+			   
+			   
+			   
+    Config.au3
+	
+	paste anyware:
+	
+	
+	   If IsChecked($chkSearchConne)  Then
+      IniWrite($configFile,"search","ChkSearchConne",1)
+   Else
+      IniWrite($configFile,"search","ChkSearchConne",0)
+   EndIf
+   IniWrite($configFile, "search", "TxtSearchConne", GUICtrlRead($txtSearchConne))
+   
+   
+   
+   
+   
+   
+   DONE!

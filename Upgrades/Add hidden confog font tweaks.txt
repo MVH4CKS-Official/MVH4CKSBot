@@ -1,0 +1,105 @@
+Font Tweaks
+
+First of all, open: CoCBot\Global Variables.au3
+Find:
+Quote:
+
+Global $FontSize
+
+Add:
+Quote:
+
+Global $FontName
+Global $TimeFormat
+
+Then, open: CoCBot\functions\Config\readConfig.au3
+
+Scroll down to the "Hidden setting" section (at the bottom of the file) and after the $FontSize line, add:
+Quote:
+
+$FontName = IniRead($config, "hidden", "fontname", "Arial")
+$TimeFormat = IniRead($config, "hidden", "timeformat", "3")
+
+if that doesnt work then replace all font tweaks with: 
+	$FontSize = IniRead($config, "position", "Fontsize", "8.5")
+	$FontName = IniRead($config, "position", "Fontname", "Lucida Console")
+    $TimeFormat = IniRead($config, "position", "Timeformat", "3")
+
+
+	Difference is that they has position instead of hidden
+	
+	
+	
+*WARNING*
+
+ I set "Arial" in here as default font. Not sure if that's the real-default tho.
+Your real-default might be dependant on your OS settings (not really sure about this...)
+Might be better to change "Arial" to "". This should use the real-default (at least normal Edit control, does).
+
+
+Now, the final step. Open: CoCBot\functions\Other\SetLog.au3
+You need to modify the first 2 functions. I believe last time "we" modified this, we went the wrong way...that's why it's "workingish" right now.
+Anyway, here's how it should be modified:
+
+
+
+
+
+Func SetLog($String, $Color = 0x000000) ;Sets the text for the log
+	_GUICtrlRichEdit_SetFont($txtLog, $FontSize, $FontName)
+	_GUICtrlRichEdit_AppendTextColor($txtLog, "[" & _NowTime(Number($TimeFormat)) & "] ", 0x000000)
+	_GUICtrlRichEdit_SetFont($txtLog, $FontSize, $FontName)
+	_GUICtrlRichEdit_AppendTextColor($txtLog, $String & @CRLF, _ColorConvert($Color))
+	_GUICtrlStatusBar_SetText($statLog, "Status : " & $String)
+	_FileWriteLog($hLogFileHandle, $String)
+EndFunc   ;==>SetLog
+
+Func _GUICtrlRichEdit_AppendTextColor($hWnd, $sText, $iColor)
+	Local $iLength = _GUICtrlRichEdit_GetTextLength($hWnd, True, True)
+	Local $iCp = _GUICtrlRichEdit_GetCharPosOfNextWord($hWnd, $iLength)
+	_GUICtrlRichEdit_SetFont($hWnd, $FontSize)
+	_GUICtrlRichEdit_AppendText($hWnd, $sText)
+	_GUICtrlRichEdit_SetSel($hWnd, $iCp - 1, $iLength + StringLen($sText))
+	_GUICtrlRichEdit_SetCharColor($hWnd, $iColor)
+	_GUICtrlRichEdit_Deselect($hWnd)
+EndFunc   ;==>_GUICtrlRichEdit_AppendTextColor
+
+Func _ColorConvert($nColor);RGB to BGR or BGR to RGB
+	Return _
+			BitOR(BitShift(BitAND($nColor, 0x000000FF), -16), _
+			BitAND($nColor, 0x0000FF00), _
+			BitShift(BitAND($nColor, 0x00FF0000), 16))
+EndFunc   ;==>_ColorConvert
+
+
+
+
+
+
+For reference:
+https://www.autoitscript.com/autoit3/docs/libfunctions/_GUICtrlRichEdit_SetFont.htm
+https://msdn.microsoft.com/en-us/goglobal/bb964664.aspx
+It would be possible to set Charset and LCID (Locale ID) too.
+This would need some additional hidden settings.
+
+
+Now, you should be able to have 3 [hidden] settings in your config.ini:
+fontname=Consolas
+fontsize=7.5
+timeformat=5
+
+
+fontname setting
+Here's AutoIt specific reference page, with some commonly used font:
+https://www.autoitscript.com/autoit3/docs/appendix/fonts.htm
+You might be able to use other fonts you installed on your system, but I'm not so sure about that.
+
+fontsize setting
+should be self explanatory.
+
+timeformat setting
+This setting can have 3 values:
+3 - (default) Display a time using the time format specified in your computer's regional settings.
+4 - Display a time using the 24-hour format (hh:mm).
+5 - Display a time using the 24-hour format (hh:mmConfuseds).
+Check https://www.autoitscript.com/autoit3/docs/libfunctions/_NowTime.htm for reference.

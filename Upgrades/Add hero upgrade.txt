@@ -1,0 +1,488 @@
+12  BrokenBot.org/languages/English.ini
+
+;find
+chkUpgrade5 = "Upgrade 5 :"
+btnLocateUp5 = "Locate Building 5"
+chkUpgrade6 = "Upgrade 6 :"
+btnLocateUp6 = "Locate Building 6"
+
+and add/ add anyware you can find it later
+
+Upgrade3 = "Upgrade Hero"
+chkUpgradeBK = "Upgrade Barbarian King"
+chkUpgradeAQ = "Upgrade Archer Queen"
+HeroMinDE = "Minimum Dark Elixir: "
+HeroMinDETip = "Minimum DE before trying to upgrade hero."
+
+msgAttemptUpgrBK = "Attempting to upgrade Barbarian King..."
+msgAttemptUpgrAQ = "Attempting to upgrade Archer Queen..."
+msgDELower = "Current Dark Elixir is lower than Minimum DE set for upgrading, skip upgrading..."
+msgNotEnoughDE =  "Not enough Dark Elixir to upgrade, skip upgrading..."
+msgHeroUpgradeNotFound = "Hero is already upgrading or is max level..."
+
+
+
+
+
+
+
+View 1 COCBot/Functions.au3
+
++#include "functions\Village\UpgradeHero.au3"
+
+
+
+
+
+
+
+View 58 COCBot/GUI Control.au3
+
+
+;~ 					Case $chkUpgrade4
+;~ 						chkUpgrade4()
+;~ 					Case $chkUpgrade5
+;~ 						chkUpgrade5()
+;~ 					Case $chkUpgrade6
+;~ 						chkUpgrade6()
+ 					Case $UseJPG
+ 						UseJPG()
+ 					Case $UseAttackJPG
+					
+					
+			;Find and nop
+			
+
+;~ Func chkUpgrade4()
+;~ 	If IsChecked($chkUpgrade4) Then
+;~ 		GUICtrlSetState($btnLocateUp4, $GUI_ENABLE)
+;~ 	Else
+;~ 		GUICtrlSetState($btnLocateUp4, $GUI_DISABLE)
+;~ 	EndIf
+;~ EndFunc   ;==>chkUpgrade4
+;~ 
+;~ Func chkUpgrade5()
+;~ 	If IsChecked($chkUpgrade5) Then
+;~ 		GUICtrlSetState($btnLocateUp5, $GUI_ENABLE)
+;~ 	Else
+;~ 		GUICtrlSetState($btnLocateUp5, $GUI_DISABLE)
+;~ 	EndIf
+;~ EndFunc   ;==>chkUpgrade5
+;~ 
+;~ Func chkUpgrade6()
+;~ 	If IsChecked($chkUpgrade6) Then
+;~ 		GUICtrlSetState($btnLocateUp6, $GUI_ENABLE)
+;~ 	Else
+;~ 		GUICtrlSetState($btnLocateUp6, $GUI_DISABLE)
+;~ 	EndIf
+;~ EndFunc   ;==>chkUpgrade6
+ 
+ Func UseJPG()
+ 	If IsChecked($UseJPG) And Not IsChecked($chkTakeLootSS) Then
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+View 58  COCBot/GUI Design.au3
+
+Find and nop
+
+;~ $Upgrade2 = GUICtrlCreateGroup(GetLangText("Upgrade2"), 20, 165, 375, 125)
+;~ $chkUpgrade4 = GUICtrlCreateCheckbox(GetLangText("chkUpgrade4"), 30, 192, 80, 17)
+;~ $lblUP4PosX = GUICtrlCreateLabel(GetLangText("lblUPPosX"), 112, 194, 40, 17)
+;~ $txtUpgradeX4 = GUICtrlCreateInput("", 152, 189, 31, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER, $ES_READONLY))
+;~ $lblUP4PosY = GUICtrlCreateLabel(GetLangText("lblUPPosY"), 195, 194, 40, 17)
+;~ $txtUpgradeY4 = GUICtrlCreateInput("", 235, 189, 31, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER, $ES_READONLY))
+;~ $btnLocateUp4 = GUICtrlCreateButton(GetLangText("btnLocateUp4"), 285, 189, 100, 21)
+;~ GUICtrlSetOnEvent(-1, "btnLocateUp4")
+;~ GUICtrlSetState(-1, $GUI_DISABLE)
+;~ $chkUpgrade5 = GUICtrlCreateCheckbox(GetLangText("chkUpgrade5"), 30, 222, 80, 17)
+;~ $lblUP5PosX = GUICtrlCreateLabel(GetLangText("lblUPPosX"), 112, 224, 40, 17)
+;~ $txtUpgradeX5 = GUICtrlCreateInput("", 152, 219, 31, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER, $ES_READONLY))
+;~ $lblUP5PosY = GUICtrlCreateLabel(GetLangText("lblUPPosY"), 195, 224, 40, 17)
+;~ $txtUpgradeY5 = GUICtrlCreateInput("", 235, 219, 31, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER, $ES_READONLY))
+;~ $btnLocateUp5 = GUICtrlCreateButton(GetLangText("btnLocateUp5"), 285, 219, 100, 21)
+;~ GUICtrlSetOnEvent(-1, "btnLocateUp5")
+;~ GUICtrlSetState(-1, $GUI_DISABLE)
+;~ $chkUpgrade6 = GUICtrlCreateCheckbox(GetLangText("chkUpgrade6"), 30, 252, 80, 17)
+;~ $lblUP6PosX = GUICtrlCreateLabel(GetLangText("lblUPPosX"), 112, 254, 40, 17)
+;~ $txtUpgradeX6 = GUICtrlCreateInput("", 152, 249, 31, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER, $ES_READONLY))
+;~ $lblUP6PosY = GUICtrlCreateLabel(GetLangText("lblUPPosY"), 195, 254, 40, 17)
+;~ $txtUpgradeY6 = GUICtrlCreateInput("", 235, 249, 31, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER, $ES_READONLY))
+;~ $btnLocateUp6 = GUICtrlCreateButton(GetLangText("btnLocateUp6"), 285, 249, 100, 21)
+;~ GUICtrlSetOnEvent(-1, "btnLocateUp6")
+;~ GUICtrlSetState(-1, $GUI_DISABLE)
+;~ GUICtrlCreateGroup("", -99, -99, 1, 1)
+
++++++++ ADD After nop
+
+$Upgrade3 = GUICtrlCreateGroup(GetLangText("Upgrade3"), 20, 165, 375, 85)
+$chkUpgradeBK = GUICtrlCreateCheckbox(GetLangText("chkUpgradeBK"), 30, 192, 155, 17)
+$chkUpgradeAQ = GUICtrlCreateCheckbox(GetLangText("chkUpgradeAQ"), 30, 222, 125, 17)
+$lblUPHero = GUICtrlCreateLabel(GetLangText("HeroMinDE"), 220, 207, 100, 17)
+$txtMinHeroDE = GUICtrlCreateInput("50000", 320, 203, 61, 22)
+GUICtrlSetTip(-1, GetLangText("HeroMinDETip"))
+GUICtrlCreateGroup("", -99, -99, 1, 1)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+View 4 COCBot/Global Variables.au3
+
+;Find
+Global $itxtUpgradeY5
+Global $itxtUpgradeX6
+Global $itxtUpgradeY6
+ 
+ ADD AFTER
+ 
+Global $ichkUpgradeBK
+Global $ichkUpgradeAQ
+Global $itxtMinHeroDE
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+View 14  COCBot/functions/Config/applyConfig.au3
+
+ Func applyConfig() ;Applies the data from config to the controls in GUI
+ 
+ ;Find
+ 	_GUICtrlComboBox_SetCurSel($cmbUnitDelay, $icmbUnitDelay)
+ 	_GUICtrlComboBox_SetCurSel($cmbWaveDelay, $icmbWaveDelay)
+	
+ ;Add after 
+ 
+;Hero
+	GUICtrlSetData($txtMinHeroDE, $itxtMinHeroDE)
+	If $ichkUpgradeBK = 1 Then
+		GUICtrlSetState($chkUpgradeBK, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkUpgradeBK, $GUI_UNCHECKED)
+	EndIf
+	
+	If $ichkUpgradeAQ = 1 Then
+		GUICtrlSetState($chkUpgradeAQ, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkUpgradeAQ, $GUI_UNCHECKED)
+	EndIf
+	
+;Ends here
+
+ ;Lab
+     If $ichkLab = 1 Then
+         GUICtrlSetState($chkLab, $GUI_CHECKED)
+View 6  COCBot/functions/Config/readConfig.au3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Func readConfig() ;Reads config and sets it to the variables
+	
+	;find
+	
+ 	$itxtWallMinGold = IniRead($config, "upgrade", "minwallgold", "0")
+ 	$itxtWallMinElixir = IniRead($config, "upgrade", "minwallelixir", "0")
+ 	$icmbTolerance = IniRead($config, "upgrade", "walltolerance", "0")
+	
+	;add After
+	
+	$itxtMinHeroDE = IniRead($config,"upgrade", "MinDE","0")
+	$ichkUpgradeBK = IniRead($config,"upgrade", "auto-upgradeBK","0")
+	$ichkUpgradeAQ = IniRead($config,"upgrade", "auto-upgradeAQ","0")
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+View 48 COCBot/functions/Config/saveConfig.au3
+
+
+
+    Func saveConfig() ;Saves the controls settings to the config
+	
+	;Find
+	
+ 	Else
+ 		IniWrite($config, "upgrade", "auto-upgrade3", 0)
+ 	EndIf
+	
+	;NOP
+;~ 	If IsChecked($chkUpgrade4) Then
+;~ 		IniWrite($config, "upgrade", "auto-upgrade4", 1)
+;~ 	Else
+;~ 		IniWrite($config, "upgrade", "auto-upgrade4", 0)
+;~ 	EndIf
+;~ 	If IsChecked($chkUpgrade5) Then
+;~ 		IniWrite($config, "upgrade", "auto-upgrade5", 1)
+;~ 	Else
+;~ 		IniWrite($config, "upgrade", "auto-upgrade5", 0)
+;~ 	EndIf
+;~ 	If IsChecked($chkUpgrade6) Then
+;~ 		IniWrite($config, "upgrade", "auto-upgrade6", 1)
+;~ 	Else
+;~ 		IniWrite($config, "upgrade", "auto-upgrade6", 0)
+;~ 	EndIf
+
+;And add after
+
+	If IsChecked($chkUpgradeBK) Then
+		IniWrite($config, "upgrade", "auto-upgradeBK", 1)
+	Else
+		IniWrite($config, "upgrade", "auto-upgradeBK", 0)
+	EndIf
+	If IsChecked($chkUpgradeAQ) Then
+		IniWrite($config, "upgrade", "auto-upgradeAQ", 1)
+	Else
+		IniWrite($config, "upgrade", "auto-upgradeAQ", 0)
+	EndIf
+	IniWrite($config, "upgrade", "PosY1", GUICtrlRead($txtUpgradeY1))
+	
+
+;then Find
+
+
+	IniWrite($config, "upgrade", "PosX6", GUICtrlRead($txtUpgradeX6))
+
+	
+;Add After
+	
+	
+	IniWrite($config, "upgrade", "MinDE", GUICtrlRead($txtMinHeroDE))
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+View 3  COCBot/functions/Village/MainLoop.au3
+ Func runBot() ;Bot that runs everything in order
+ 
+ 
+ ;Find
+ 
+ 
+ 		Laboratory()
+ 		If StatusCheck() Then Return
+		
+		
+		
+;Add after	
+		
+		
+		
+		UpgradeHero()
+		If StatusCheck() Then Return
+ 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+;Create new au3	called UpgradeHero.au3
+		
+		
+View 131 COCBot/functions/Village/UpgradeHero.au3
+
+
+Func UpgradeHero()
+	$ichkUpgradeBK = GUICtrlRead($chkUpgradeBK)
+	$ichkUpgradeAQ = GUICtrlRead($chkUpgradeAQ)
+	
+	If $ichkUpgradeBK = 0 And $ichkUpgradeAQ = 0 Then Return
+
+	If $ichkUpgradeBK = 1  And $KingPos[0] = "" Then
+		If Not LocateKingAltar() Then Return
+		SaveConfig()
+		If _Sleep(2000) Then Return
+		ClickP($TopLeftClient) ;Click Away
+	EndIf
+	
+	If $ichkUpgradeAQ And $QueenPos[0] = "" Then
+		If Not LocateQueenAltar() Then Return
+		SaveConfig()
+		If _Sleep(2000) Then Return
+		ClickP($TopLeftClient) ;Click Away
+	EndIf
+	
+	VillageReport()
+	If $FreeBuilder = 0 Then
+		SetLog(GetLangText("msgNoBuilders"), $COLOR_RED)
+		ClickP($TopLeftClient) ; Click Away
+		Return
+	EndIf
+
+	Local $itxtMinHeroDE = Number(GUICtrlRead($txtMinHeroDE))
+	Local $iDEStorage = Number($DarkCount)
+
+	;Upgrade BK
+	If $iDEStorage < $itxtMinHeroDE Then Return
+
+	If $ichkUpgradeBK = 1 Then
+		SetLog(GetLangText("msgAttemptUpgrBK"))
+
+		If _Sleep(500) Then Return
+		Click($KingPos[0], $KingPos[1])
+		If _Sleep(500) Then Return
+		
+		;Local $ElixirUpgrade = _PixelSearch(300, 560, 629, 583, Hex(0xF759E8, 6), 10) ;Finds Elixir Upgrade Button
+		;Local $GoldUpgrade = _PixelSearch(300, 560, 629, 583, Hex(0xF4EE54, 6), 10) ;Finds Gold Upgrade Button
+		Local $DEUpgrade = _PixelSearch(300, 560, 629, 583, Hex(0x574460, 6), 10) ;Finds DE Upgrade Button
+
+		If IsArray($DEUpgrade) Then
+			Click($DEUpgrade[0], $DEUpgrade[1]) ;Click Upgrade Button
+			If _Sleep(1000) Then Return
+			Local $UpgradeCheck = _PixelSearch(300, 463, 673, 522, Hex(0xB9E051, 6), 10) ;Confirm Upgrade
+			If IsArray($UpgradeCheck) Then
+				Click($UpgradeCheck[0], $UpgradeCheck[1]) ;Click Upgrade Button
+				If _Sleep(1000) Then Return
+				_CaptureRegion()
+				If _ColorCheck(_GetPixelColor(571, 263) <> Hex(0xD90404, 6), 20) Then 
+					SetLog("BK " & GetLangText("msgUpgradeSuccess"), $COLOR_GREEN)
+					If _Sleep(1000) Then Return
+					ClickP($TopLeftClient, 2)
+					SetLog(GetLangText("msgUnchecking"), $COLOR_GREEN)
+					GUICtrlSetState($chkUpgradeBK, $GUI_UNCHECKED)
+				Else
+					SetLog(GetLangText("msgNotEnoughDE"), $COLOR_RED)
+					ClickP($TopLeftClient, 2)					
+				EndIf
+			EndIf
+		Else
+			SetLog(GetLangText("msgHeroUpgradeNotFound"), $COLOR_RED)
+			ClickP($TopLeftClient, 2)	
+		EndIf		
+
+		VillageReport()
+		If _Sleep(1000) Then Return
+		If $FreeBuilder = 0 Then
+			SetLog(GetLangText("msgNoBuilders"), $COLOR_RED)
+			ClickP($TopLeftClient) ; Click Away
+			Return
+		EndIf
+		If _Sleep(1000) Then Return
+		$iDEStorage = Number($DarkCount)
+		If _Sleep(2000) Then Return
+		ClickP($TopLeftClient, 2)
+	EndIf
+
+	If $iDEStorage < $itxtMinHeroDE Then Return
+
+	;Upgrade AQ
+
+	If $ichkUpgradeAQ = 1 Then
+		SetLog(GetLangText("msgAttemptUpgrAQ"))
+
+		If _Sleep(500) Then Return
+		Click($QueenPos[0], $QueenPos[1])
+		If _Sleep(500) Then Return
+		
+		;Local $ElixirUpgrade = _PixelSearch(300, 560, 629, 583, Hex(0xF759E8, 6), 10) ;Finds Elixir Upgrade Button
+		;Local $GoldUpgrade = _PixelSearch(300, 560, 629, 583, Hex(0xF4EE54, 6), 10) ;Finds Gold Upgrade Button
+		Local $DEUpgrade = _PixelSearch(300, 560, 629, 583, Hex(0x574460, 6), 10) ;Finds DE Upgrade Button
+
+		If IsArray($DEUpgrade) Then
+			Click($DEUpgrade[0], $DEUpgrade[1]) ;Click Upgrade Button
+			If _Sleep(1000) Then Return
+			Local $UpgradeCheck = _PixelSearch(300, 463, 673, 522, Hex(0xB9E051, 6), 10) ;Confirm Upgrade
+			If IsArray($UpgradeCheck) Then
+				Click($UpgradeCheck[0], $UpgradeCheck[1]) ;Click Upgrade Button
+				If _Sleep(1000) Then Return
+				_CaptureRegion()
+				If _ColorCheck(_GetPixelColor(571, 263) <> Hex(0xD90404, 6), 20) Then
+					SetLog("AQ " & GetLangText("msgUpgradeSuccess"), $COLOR_GREEN)
+					If _Sleep(1000) Then Return
+					ClickP($TopLeftClient, 2)
+				Else
+					SetLog(GetLangText("msgNotEnoughDE"), $COLOR_RED)
+					ClickP($TopLeftClient, 2)					
+				EndIf				
+			EndIf
+		Else
+			SetLog(GetLangText("msgHeroUpgradeNotFound"), $COLOR_RED)
+			ClickP($TopLeftClient, 2)
+		EndIf		
+
+		VillageReport()
+		If _Sleep(1000) Then Return
+		If $FreeBuilder = 0 Then
+			SetLog(GetLangText("msgNoBuilders"), $COLOR_RED)
+			ClickP($TopLeftClient) ; Click Away
+			Return
+		EndIf
+		If _Sleep(1000) Then Return
+		$iDEStorage = Number($DarkCount)
+		If _Sleep(2000) Then Return
+		ClickP($TopLeftClient, 2)
+	EndIf
+EndFunc 

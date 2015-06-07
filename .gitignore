@@ -1,14 +1,32 @@
-# http://www.gnu.org/software/automake
+##################################################
+## Remove files not part of BrokenBot base code ##
+##################################################
 
-Makefile.in
+AllTowns/
+Attacks/
+Debug/
+logs/
+Loots/
+config/*.ini
+strategies/*.ini
+.developer
 
-# http://www.gnu.org/software/autoconf
+######################
+## Windows detritus ##
+######################
 
-/autom4te.cache
-/aclocal.m4
-/compile
-/configure
-/depcomp
-/install-sh
-/missing
-/stamp-h1
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Autoit BAK file
+*.bak
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Mac crap
+.DS_Store

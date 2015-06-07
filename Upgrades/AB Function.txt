@@ -1,0 +1,113 @@
+In Steps way:
+- Add in BrokenBot.org\languages\English.ini
+Quote:
+-> Add 
+chkBuilderUpgrade = "AB"
+chkBuilderUpgTip = "Check to use all builder to auto upgrade building, uncheck to left 1 builder when auto upgrade"
+msgDontUseAllBuilder = "Only 1 builder left, check AB in OTHER Settings to use All Builder"
+msgDontUseAllBuilder2 = "You checked All Builder and Wall Upgrade, Only 1 builder left and it's mainly left for Wall Upgrade"
+msgDontUseAllBuilder3 = "You checked Wall Upgrade, and Only 1 builder left and it's mainly left for Wall Upgrade"
+
+
+
+
+
+
+- Add in GUI Design.au3
+
+
+;Use All Builder
+$chkUseAllBuilder = GUICtrlCreateCheckbox(GetLangText("chkBuilderUpgrade"), 145, 87, 40, 17)
+GUICtrlSetTip(-1, GetLangText("chkBuilderUpgTip"))
+    
+	
+	
+	
+
+
+- Add in GUI Control.au3
+
+
+Insert in line 94 : After : Case $chkUpgrade6
+Quote:
+
+Case $chkUseAllBuilder
+        chkUseAllBuilder()
+
+Insert in line 580 : after : ;==>chkUpgrade6
+Quote:
+
+Func chkUseAllBuilder()
+         If IsChecked($chkWalls) Then
+              GUICtrlSetState($chkUseAllBuilder, $GUI_UNCHECKED)
+         Else
+              GUICtrlSetState($chkUseAllBuilder, $GUI_CHECKED)
+         EndIf
+EndFunc   ;==>chktouseallbuilder
+
+
+
+
+
+- Go to COCBot\functions\Village\UpgradeBuilding.au3
+
+
+and search for this code (there should be 4 code of this):
+[-]Original Code
+Quote:
+
+If $FreeBuilder = 0 Then
+SetLog(GetLangText("msgNoBuilders"), $COLOR_RED)
+ClickP($TopLeftClient) ; Click Away
+Return
+
+
+
+
+replace with :
+
+
+
+
+Version 1 (You can choose to use All Builder even in checked Wall Upgrade Condition, Just checked "AB" first before you checked Wall Upgrade):
+Quote:
+
+If $FreeBuilder = 0 Then
+SetLog(GetLangText("msgNoBuilders"), $COLOR_RED)
+ClickP($TopLeftClient) ; Click Away
+Return
+ElseIf $FreeBuilder <= 1 And Not (IsChecked($chkUseAllBuilder)) And (IsChecked($chkWalls)) Then
+SetLog(GetLangText("msgDontUseAllBuilder3"), $COLOR_RED)
+ClickP($TopLeftClient) ; Click Away
+Return
+ElseIf $FreeBuilder <= 1 And Not (IsChecked($chkUseAllBuilder)) And Not (IsChecked($chkWalls)) Then
+SetLog(GetLangText("msgDontUseAllBuilder"), $COLOR_RED)
+ClickP($TopLeftClient) ; Click Away
+Return
+endif
+
+
+
+
+OR
+
+
+
+
+
+Version 2 (Whatever you do, if Wall Upgrade are checked you can't use All Builder to Autoupgrade) :
+Quote:
+
+If $FreeBuilder = 0 Then
+SetLog(GetLangText("msgNoBuilders"), $COLOR_RED)
+ClickP($TopLeftClient) ; Click Away
+Return
+ElseIf $FreeBuilder <= 1 And Not (IsChecked($chkUseAllBuilder)) And (IsChecked($chkWalls)) Then
+SetLog(GetLangText("msgDontUseAllBuilder3"), $COLOR_RED)
+ClickP($TopLeftClient) ; Click Away
+Return
+ElseIf $FreeBuilder <= 1 And (IsChecked($chkUseAllBuilder)) And (IsChecked($chkWalls)) Then
+SetLog(GetLangText("msgDontUseAllBuilder2"), $COLOR_RED)
+ClickP($TopLeftClient) ; Click Away
+Return
+endif
